@@ -16,7 +16,30 @@
     function App() {
       const [counter, setCounter] = React.useState(0);
       const onClick = () => {
-        setCounter(counter + 1);
+        const counterInAppComponent = counter + 1;
+        setCounter(counterInAppComponent);
+        console.log("값:", counterInAppComponent);
+        setCounter(counterInAppComponent);
+        console.log("값:", counterInAppComponent);
+        setCounter(counterInAppComponent);
+        console.log("값:", counterInAppComponent);
+        console.log("---");
+
+        const cb = (current) => {
+          console.log("callback 호출!!!!!!!")
+          console.log("현재 값:", current);
+          const counterInCallback = current + 1;
+          console.log("바뀐 값:", counterInCallback);
+          return counterInCallback;
+        }
+
+        setCounter(cb);
+        console.log("값:", counterInAppComponent);
+        setCounter(cb);
+        console.log("값:", counterInAppComponent);
+        setCounter(cb);
+        console.log("값:", counterInAppComponent);
+        console.log("---");
       }
       return (
         <div>
