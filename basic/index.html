@@ -14,41 +14,28 @@
   <script type="text/babel">
     const root = document.getElementById("root");
     function App() {
-      const [counter, setCounter] = React.useState(0);
-      const onClick = () => {
-        const counterInAppComponent = counter + 1;
-        setCounter(counterInAppComponent);
-        console.log("값:", counterInAppComponent);
-        setCounter(counterInAppComponent);
-        console.log("값:", counterInAppComponent);
-        setCounter(counterInAppComponent);
-        console.log("값:", counterInAppComponent);
-        console.log("---");
-
-        const cb = (current) => {
-          console.log("callback 호출!!!!!!!")
-          console.log("현재 값:", current);
-          const counterInCallback = current + 1;
-          console.log("바뀐 값:", counterInCallback);
-          return counterInCallback;
-        }
-
-        setCounter(cb);
-        console.log("값:", counterInAppComponent);
-        setCounter(cb);
-        console.log("값:", counterInAppComponent);
-        setCounter(cb);
-        console.log("값:", counterInAppComponent);
-        console.log("---");
-      }
+      const [minutes, setMinutes] = React.useState();
+      const onChange = (event) => {
+        setMinutes(event.target.value);
+      };
       return (
         <div>
-          <h3>
-            Total Clicks: {counter}
-          </h3>
-          <button onClick={onClick}>
-            Click me
-          </button>
+          <h1>Super Converter</h1>
+          <label htmlFor="minutes">Minutes</label>
+          <input 
+            value={minutes} 
+            id="minutes" 
+            placeholder="Minutes" 
+            type="number" 
+            onChange={onChange} 
+          />
+          <h4>You want to convert {minutes}</h4>
+          <label htmlFor="hours">Hours</label>
+          <input 
+            id="hours" 
+            placeholder="Hours" 
+            type="number" 
+          />
         </div>
       )
     };
