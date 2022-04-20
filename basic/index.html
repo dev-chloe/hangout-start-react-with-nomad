@@ -16,6 +16,7 @@
     const root = document.getElementById("root");
 
     function Btn(props) {
+      console.log(props.text, "was rendered");
       return (
         <button 
           onClick={props.onClick}
@@ -30,7 +31,7 @@
         >{props.text}</button>
       )
     }
-    
+
     const MemorizedBtn = React.memo(Btn);
     
     MemorizedBtn.propTypes = {
@@ -43,7 +44,7 @@
       const changeValue = () => setValue("Revert Changes");
       return (
         <div>
-          <MemorizedBtn text={value} fontSize={18} />
+          <MemorizedBtn text={value} fontSize={18} onClick={changeValue}/>
           <MemorizedBtn text={"Continue"} />
         </div>
       )
