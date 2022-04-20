@@ -14,23 +14,32 @@
   <script type="text/babel">
     const root = document.getElementById("root");
 
-    function Btn({text, big}) {
+    function Btn(props) {
       // console.log(props);
-      console.log(text, big);
-      return <button style={{
-        background: "#5b96ff",
-        color: "white",
-        padding: "10px 20px",
-        borderRadius: 5,
-        border: "0",
-        fontSize: big ? 18 : 16,
-      }}>{text}</button>
+      console.log(props.text, "was render");
+      return (
+        <button 
+          onClick={props.onClick}
+          style={{
+            background: "#5b96ff",
+            color: "white",
+            padding: "10px 20px",
+            borderRadius: 5,
+            border: "0"
+          }}
+        >{props.text}</button>
+      )
     }
+
+    const MemorizedBtn = React.memo(Btn);
+
     function App() {
+      const [value, setValue] = React.useState("Save Changes");
+      const changeValue = () => setValue("Revert Changes");
       return (
         <div>
-          <Btn text="Save Changes" big={true} />
-          <Btn text="Continue" />
+          <MemorizedBtn text={value} onClick={changeValue} />
+          <MemorizedBtn text="Continue" />
         </div>
       )
     };
