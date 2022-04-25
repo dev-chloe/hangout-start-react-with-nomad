@@ -83,9 +83,12 @@
     </React.StrictMode>
   );
 ```
-> 두 번씩 render 된다
+> 두 번씩 render 되는 것 처럼 보이지만 React Developer Tools을 이용하여 확인해 보면 예상하지 못한 문제 발상 방지를 위한 검사 후 실제 render가 되는 것이 확인 가능하다
 
   <img width="200" alt="StrictMode" src="_note/StrictMode_result.png">
+
+
+  <img width="400" alt="StrictMode" src="_note/StrictMode_result2.png">
 
 ```javascript
   // index.js
@@ -98,7 +101,7 @@
     </>
   );
 ```
-> 한 번만 render 된다
+> render 아무런 확인 없이 진행 된다
 
   <img width="200" alt="StrictMode" src="_note/not_StrictMode_result.png">
 
