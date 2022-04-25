@@ -44,3 +44,62 @@
 
 
 - Ref. [React.JS docs: props](https://ko.reactjs.org/docs/components-and-props.html)
+
+
+#### React.StrictMode
+
+> 애플리케이션 내의 잠재적인 문제를 알아내기 위한 도구  
+> Strict 모드는 개발 모드에서만 활성화되기 때문에, 프로덕션 빌드에는 영향을 끼치지 않는다
+
+
+> render가 두 번씩이나??
+
+```javascript
+  // App.js
+  
+  function App() {
+    const [counter, setValue] = useState(0);
+    const onClick = () => setValue((prev) => prev + 1);
+    console.log("i run all the time");
+    useEffect(() => {
+      console.log("CALL THE API")
+    }, []);
+    return (
+      <div>
+        <h1 className={styles.title}>{counter}</h1>
+        <Button text={"click me"} onClick={onClick}/>
+      </div>
+    );
+  }
+``` 
+```javascript
+  // index.js
+  // StrictMode일 때
+
+  const root = ReactDOM.createRoot(document.getElementById('root'));
+  root.render(
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>
+  );
+```
+> 두 번씩 render 된다
+
+  <img width="200" alt="StrictMode" src="_note/StrictMode_result.png">
+
+```javascript
+  // index.js
+  // StrictMode 아닐 때
+
+  const root = ReactDOM.createRoot(document.getElementById('root'));
+  root.render(
+    <>
+      <App />
+    </>
+  );
+```
+> 한 번만 render 된다
+
+  <img width="200" alt="StrictMode" src="_note/not_StrictMode_result.png">
+
+- Ref. [React.JS docs: StrictMode](https://ko.reactjs.org/docs/strict-mode.html)
