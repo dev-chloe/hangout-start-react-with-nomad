@@ -1,39 +1,32 @@
-import { useState, useEffect } from "react";
-import Button from "./Button";
-import styles from "./App.module.css"
-
-// function Hello() {
-//   useEffect(() => {
-//     console.log("created! :)")
-//     return () => console.log("destroyed! :(")
-//   }, []);
-//   return <h1>Hello</h1>
-// }
-
-// function App() {
-//   const [showing, setShowing] = useState(false);
-//   const onClick = () => setShowing((prev) => !prev);
-//   return (
-//     <div>
-//       {showing ? <Hello /> : null }
-//       <button onClick={onClick}>{showing ? "Hide" : "Show"}</button>
-//     </div>
-//   );
-// }
+import { useState } from "react";
 
 function App() {
-    const [counter, setValue] = useState(0);
-    const onClick = () => setValue((prev) => prev + 1);
-    console.log("i run all the time");
-    useEffect(() => {
-      console.log("CALL THE API")
-    }, []);
-    return (
-      <div>
-        <h1 className={styles.title}>{counter}</h1>
-        <Button text={"click me"} onClick={onClick}/>
-      </div>
-    );
+  const [toDo, setToDo] = useState("");
+  const [toDos, setToDos] = useState([]);
+  const onChange = (event) => setToDo(event.target.value); 
+  const onSubmit = (event) => {
+    event.preventDefault();
+    if (toDo === "") {
+      return;
+    }
+    setToDos(currentArray => [toDo, ...currentArray]);
+    setToDo("");
   }
+  console.log(toDos)
+  return (
+    <div>
+      <h1>my To Dos({toDos.length})</h1>
+      <form onSubmit={onSubmit}>
+        <input 
+          onChange={onChange}
+          value={toDo} 
+          type="text" 
+          placeholder="Write your to do!"
+        />
+        <button>Add To Do</button>
+      </form>
+    </div>
+  );
+}
 
 export default App;
