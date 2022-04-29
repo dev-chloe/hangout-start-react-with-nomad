@@ -3,7 +3,8 @@ import { Link } from "react-router-dom";
 
 function Movie(props) {
   return (
-    <Link key={props.id} to={`/movie/${props.id}`}>
+    // <Link key={props.id} to={`/movie/${props.id}`}>
+    <Link key={props.id} to={`${process.env.PUBLIC_URL}/movie/${props.id}`}>
       <img src={props.medium_cover_image} alt={props.title} />
       <h2>{props.title}</h2>
       <p>{props.summary}</p>
