@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.js": "/hangout-start-react-with-nomad/static/js/main.c5943d46.js",
+    "main.js": "/hangout-start-react-with-nomad/static/js/main.61df9219.js",
     "index.html": "/hangout-start-react-with-nomad/index.html",
-    "main.c5943d46.js.map": "/hangout-start-react-with-nomad/static/js/main.c5943d46.js.map"
+    "main.61df9219.js.map": "/hangout-start-react-with-nomad/static/js/main.61df9219.js.map"
   },
   "entrypoints": [
-    "static/js/main.c5943d46.js"
+    "static/js/main.61df9219.js"
   ]
 }
