@@ -106,3 +106,70 @@
   <img width="200" alt="StrictMode" src="_note/not_StrictMode_result.png">
 
 - Ref. [React.JS docs: StrictMode](https://ko.reactjs.org/docs/strict-mode.html)
+
+
+
+## Project Movie App
+
+### Initiation
+
+1. Start React
+
+```bash
+# create react app
+npx create-react-app 'project name'
+cd project name
+npm start
+```
+
+### Set dependencies
+
+1. [**ReactRouter**](https://reactrouter.com/)
+
+> "페이지 이동" 기능을 제공  
+> 사용자가 입력한 주소를 감지하는 역할,  
+> 여러 환경에서 동작할 수 있도록 여러 종류의 라우터 컴포넌트를 제공함
+
+```bash
+# react router
+npm install react-router-dom
+```
+  - 버전 5
+    > 버전 5에서는 Switch를 사용함
+    > Router를 사용해서 그 안에 컴포넌트를 불러옴
+
+    ```javascript
+      function App() {
+        return (
+          <BrowserRouter>
+            <Switch>
+              <Route exact path="/">
+                <Home />
+              </Route>
+              <Route path="/about">
+                <About />
+              </Route>
+              <Route path="/users/:id" children={<User />} />
+            </Switch>
+          </BrowserRouter>
+        );
+      }
+    ```
+  - 버전 6
+    > 버전 6에서는 Switch 대신 Routes를 사용
+    > Router에 element를 이용해 컴포넌틀를 간결하게 불러올 수 있음
+
+    ```javascript
+      function App() {
+        return (
+          <BrowserRouter>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="users/*" element={<Users />} />
+            </Routes>
+          </BrowserRouter>
+        );
+      }
+    ```
+- Ref. [React Router docs: Upgrading from v5](https://reactrouter.com/docs/en/v6/upgrading/v5#upgrading-from-v5)
+

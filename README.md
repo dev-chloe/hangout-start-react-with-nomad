@@ -6,3 +6,10 @@ Learning React
 
 - [basic](NOTE.md#basic)
   - [useState](NOTE.md#usestate)
+  - [props](NOTE.md#props)
+  - [React.memo](NOTE.md#reactmemo)
+  - [React.StrictMode](NOTE.md#reactstrictmode)
+
+- [Project Movie App](NOTE.md#project-movie-app)
+  - [Initiation](NOTE.md#initiation)
+  - [Set dependencies](NOTE.md#set-dependencies)
