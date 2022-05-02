@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import styles from './Detail.module.css';
 
 function Detail() {
   const [loading, setLoading] = useState(true);
@@ -21,12 +22,24 @@ function Detail() {
         <h1>Loading...</h1>
       ) : (
         <div>
-          <img src={movieDetail.medium_cover_image} alt={movieDetail.title} />
-            <h3>{movieDetail.title} <i>({movieDetail.year})</i></h3>
+          <div className={styles.bg_img} style={{backgroundImage: `url(${movieDetail.background_image_original})`}}>
+            <div className={styles.title}>
+              <h3>{movieDetail.title} <i className={styles.year}>({movieDetail.year})</i></h3>
+            </div>
+          </div>
+          <div className={styles.container}>
+            <div className={styles.top_box}> 
+              <div className={styles.thum}>  
+                <img src={movieDetail.medium_cover_image} alt={movieDetail.title} />
+              </div>
+              <div className={styles.info_box}>
+                <p>{movieDetail.genres.map((g) => <span key={g} className={styles.gen}>{g} </span>)}</p>
+                <p><span className={styles.bold}>{movieDetail.runtime}</span> mins</p>
+                <p><span className={styles.red}>&#9733;</span> {movieDetail.rating}</p>
+              </div>  
+            </div>  
             <p>{movieDetail.summary}</p>
-            <p>{movieDetail.genres.map((g) => <span key={g}>{g} </span>)}</p>
-            <p>{movieDetail.runtime} mins</p>
-            <p>&#9733; {movieDetail.rating}</p>
+          </div>
         </div>
       )}
     </div>
