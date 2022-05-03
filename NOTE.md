@@ -111,65 +111,133 @@
 
 ## Project Movie App
 
+## Environment
+
+1. Install node environment
+
+   ```bash
+   # Check
+   node --version
+   nvm --version
+
+   # Setup node manager
+   nvm install 16.14.2
+   
+   # Check
+   nvm current
+   nvm list --no-alias
+   node --version
+
+   # Setup package manger
+   npm install --global npm   # Maybe need to set a version. Please 
+   
+   # Check
+   npm --version
+
+   # Set up npx
+   npm install npx --global
+   
+   # Check
+   npx --version
+   ```
+
 ### Initiation
 
 1. Start React
 
-```bash
-# create react app
-npx create-react-app 'project name'
-cd project name
-npm start
-```
+    ```bash
+    # create react app
+    npx create-react-app 'project name'
+    cd project name
+    npm start
+    ```
 
 ### Set dependencies
 
 1. [**ReactRouter**](https://reactrouter.com/)
 
-> "페이지 이동" 기능을 제공  
-> 사용자가 입력한 주소를 감지하는 역할,  
-> 여러 환경에서 동작할 수 있도록 여러 종류의 라우터 컴포넌트를 제공함
+    > "페이지 이동" 기능을 제공  
+    > 사용자가 입력한 주소를 감지하는 역할,  
+    > 여러 환경에서 동작할 수 있도록 여러 종류의 라우터 컴포넌트를 제공함
 
-```bash
-# react router
-npm install react-router-dom
-```
-  - 버전 5
-    > 버전 5에서는 Switch를 사용함
-    > Router를 사용해서 그 안에 컴포넌트를 불러옴
+    ```bash
+    # react router
+    npm install react-router-dom
+    ```
+      - 버전 5
+        > 버전 5에서는 Switch를 사용함
+        > Router를 사용해서 그 안에 컴포넌트를 불러옴
+
+        ```javascript
+          function App() {
+            return (
+              <BrowserRouter>
+                <Switch>
+                  <Route exact path="/">
+                    <Home />
+                  </Route>
+                  <Route path="/about">
+                    <About />
+                  </Route>
+                  <Route path="/users/:id" children={<User />} />
+                </Switch>
+              </BrowserRouter>
+            );
+          }
+        ```
+      - 버전 6
+        > 버전 6에서는 Switch 대신 Routes를 사용
+        > Router에 element를 이용해 컴포넌틀를 간결하게 불러올 수 있음
+
+        ```javascript
+          function App() {
+            return (
+              <BrowserRouter>
+                <Routes>
+                  <Route path="/" element={<Home />} />
+                  <Route path="users/*" element={<Users />} />
+                </Routes>
+              </BrowserRouter>
+            );
+          }
+        ```
+  - Ref. [React Router docs: Upgrading from v5](https://reactrouter.com/docs/en/v6/upgrading/v5#upgrading-from-v5)
+
+2. [**gh-pages**](https://www.npmjs.com/package/gh-pages)
+
+    > GitHub 저장소(repository)를 이용해 웹 사이트를 무료로 호스팅해주는 서비스로 GitHub에서 제공함
+
+    ```bash
+    # gh-pages
+    npm install gh-pages
+    ```
 
     ```javascript
-      function App() {
-        return (
-          <BrowserRouter>
-            <Switch>
-              <Route exact path="/">
-                <Home />
-              </Route>
-              <Route path="/about">
-                <About />
-              </Route>
-              <Route path="/users/:id" children={<User />} />
-            </Switch>
-          </BrowserRouter>
-        );
-      }
+    // package.json
+    // add "homepage"
+    // add script "deploy" & "predeploy"
+    {
+      "name": "react-for-beginners",
+      "version": "0.1.0",
+      "private": true,
+      ...
+      "scripts": {
+        "start": "react-scripts start",
+        "build": "react-scripts build",
+        "test": "react-scripts test",
+        "eject": "react-scripts eject",
+        "deploy": "gh-pages -d build",
+        "predeploy": "npm run build"
+      },
+      ...
+      "homepage": "https://dev-chloe.github.io/hangout-start-react-with-nomad/"
+    }
     ```
-  - 버전 6
-    > 버전 6에서는 Switch 대신 Routes를 사용
-    > Router에 element를 이용해 컴포넌틀를 간결하게 불러올 수 있음
+    [package.json](./react-for-beginners/package.json)
 
-    ```javascript
-      function App() {
-        return (
-          <BrowserRouter>
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="users/*" element={<Users />} />
-            </Routes>
-          </BrowserRouter>
-        );
-      }
+    ```bash
+    # build
+    npm run deploy
     ```
-- Ref. [React Router docs: Upgrading from v5](https://reactrouter.com/docs/en/v6/upgrading/v5#upgrading-from-v5)
+
 
