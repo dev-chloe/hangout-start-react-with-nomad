@@ -240,4 +240,23 @@
     npm run deploy
     ```
 
+    > 위 방법을 따라하다가 페이지가 아무것도 뜨지 않을 때
+
+    ```javascript
+    // App.js에 path 확인 하자
+    // path에 ${process.env.PUBLIC_URL}를 추가
+    function App() {
+      return <Router>
+        <Routes>
+          <Route path={`${process.env.PUBLIC_URL}/movie/:id`} element={<Detail />} />
+          <Route path={`${process.env.PUBLIC_URL}/`} element={<Home />} />
+        </Routes>
+      </Router>;
+    }
+
+    // Movie.js에 Link의 to에도 {process.env.PUBLIC_URL}를 추가
+    <Link key={props.id} to={`${process.env.PUBLIC_URL}/movie/${props.id}`} className={styles.movie_box}>
+    </Link>
+    ```
+
 

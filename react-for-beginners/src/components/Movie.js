@@ -5,7 +5,7 @@ import styles from "./Movie.module.css";
 function Movie(props) {
   return (
     <Link key={props.id} to={`/movie/${props.id}`} className={styles.movie_box}>
-    {/* <Link key={props.id} to={`${process.env.PUBLIC_URL}/movie/${props.id}`}> */}
+    {/* <Link key={props.id} to={`${process.env.PUBLIC_URL}/movie/${props.id}`} className={styles.movie_box}> */}
       <div className={styles.img_wrapper}>
         <img src={props.medium_cover_image} alt={props.title} />
       </div>
