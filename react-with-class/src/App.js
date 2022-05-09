@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import Movie from "./Movies";
+import "./App.css";
 
 class App extends React.Component {
   state = {
@@ -24,7 +25,7 @@ class App extends React.Component {
               <span className="loader_txt">Loading...</span>
             </div>
           ) : (
-            <div className="moives">
+            <div className="movies">
               {movies.map(movie => (
                 <Movie
                   key={movie.id}
