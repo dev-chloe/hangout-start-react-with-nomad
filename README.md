@@ -13,3 +13,7 @@ Learning React
 - [Project Movie App](NOTE.md#project-movie-app)
   - [Initiation](NOTE.md#initiation)
   - [Set dependencies](NOTE.md#set-dependencies)
+
+## 수료증
+
+[![certification](./_note/certification.png)](https://nomadcoders.co/certs/24cd555b-7484-4457-8eec-baf2ad0c7cac)
