@@ -4,6 +4,8 @@ Learning React
 
 ## ReactJS로 영화 웹 서비스 만들기
 
+[![certification](./_note/site.png)](https://dev-chloe.github.io/hangout-start-react-with-nomad/)
+
 - [basic](NOTE.md#basic)
   - [useState](NOTE.md#usestate)
   - [props](NOTE.md#props)
